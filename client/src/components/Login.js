@@ -109,7 +109,7 @@ const Login = ({ login, auth }) => {
               color="primary"
               variant="contained"
             >
-              {auth.loading ? <>Login...</> : <>Login</>}
+              {login.loading ? <>Please Wait...</> : <>Login</>}
             </Button>
           </Grid>
         </DialogActions>

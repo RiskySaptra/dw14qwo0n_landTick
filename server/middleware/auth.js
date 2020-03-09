@@ -14,6 +14,7 @@ exports.auth = async (req, res, next) => {
       throw new Error();
     }
     req.user = user.id;
+    req.role = user.role;
     // req.level = user.level;
     req.token = token;
     next();

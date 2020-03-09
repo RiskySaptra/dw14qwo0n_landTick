@@ -1,9 +1,10 @@
 import { API, setAuthToken } from "../config/api";
+import { LOGIN, REGISTER, AUTO_AUTH, LOGOUT } from "../config/contants";
 
 export const login = data => {
   console.log("login on");
   return {
-    type: "LOGIN",
+    type: LOGIN,
     payload: async () => {
       // console.log(data);
       const res = await API.post("/login", data);
@@ -16,7 +17,7 @@ export const login = data => {
 export const register = data => {
   console.log("register on");
   return {
-    type: "REGISTER",
+    type: REGISTER,
     payload: async () => {
       const res = await API.post("/register", data);
       // console.log("Move", res.data.data);
@@ -28,7 +29,7 @@ export const userCheck = () => {
   const token = localStorage.getItem("token");
   if (token) {
     return {
-      type: "AUTO_AUTH",
+      type: AUTO_AUTH,
       payload: async () => {
         setAuthToken(token);
         const res = await API.get("/userCheck");
@@ -38,34 +39,18 @@ export const userCheck = () => {
     };
   } else {
     return {
-      type: "LOGOUT",
+      type: LOGOUT,
       payload: {}
     };
   }
 };
+
 export const logout = () => {
   console.log("logout on");
   return {
-    type: "LOGOUT",
+    type: LOGOUT,
     payload: async () => {
       localStorage.removeItem("token");
     }
   };
 };
-
-// export const userCheck = () => {
-//   return {
-//     type: "AUTO_AUTH",
-//     payload: async () => {
-//       const token = localStorage.getItem("token");
-//       setAuthToken(token);
-//       if (token != null) {
-//         const res = await API.get("/userCheck");
-//         // console.log("Move", res.data.data);
-//         return res.data.data;
-//       } else {
-//         return localStorage.removeItem("token");
-//       }
-//     }
-//   };
-// };

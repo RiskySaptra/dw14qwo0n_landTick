@@ -39,7 +39,7 @@ const Register = ({ register }) => {
   const handleChange = e => {
     setData({ ...data, [e.target.id]: e.target.value });
   };
-  const handleLogin = () => {
+  const handleSubmit = () => {
     register(data);
   };
   // console.log(data);
@@ -77,6 +77,7 @@ const Register = ({ register }) => {
             alignItems="stretch"
           >
             <TextField
+              variant="outlined"
               margin="dense"
               id="full_name"
               label="Full Name"
@@ -86,6 +87,7 @@ const Register = ({ register }) => {
               style={{ minWidth: "300px" }}
             />
             <TextField
+              variant="outlined"
               margin="dense"
               id="user_name"
               label="User Name"
@@ -94,6 +96,7 @@ const Register = ({ register }) => {
               onChange={handleChange}
             />
             <TextField
+              variant="outlined"
               margin="dense"
               id="email"
               label="Email"
@@ -102,6 +105,7 @@ const Register = ({ register }) => {
               onChange={handleChange}
             />
             <TextField
+              variant="outlined"
               margin="dense"
               id="password"
               label="Password"
@@ -110,6 +114,7 @@ const Register = ({ register }) => {
               onChange={handleChange}
             />
             <TextField
+              variant="outlined"
               margin="dense"
               id="gender"
               label="Gender"
@@ -118,6 +123,7 @@ const Register = ({ register }) => {
               onChange={handleChange}
             />
             <TextField
+              variant="outlined"
               margin="dense"
               id="address"
               label="Address"
@@ -129,8 +135,14 @@ const Register = ({ register }) => {
         </DialogContent>
         <DialogActions>
           <Grid container direction="row" justify="center" alignItems="center">
-            <Button fullWidth value="Submit" onClick={handleLogin}>
-              Register
+            <Button
+              value="Submit"
+              onClick={handleSubmit}
+              fullWidth
+              color="primary"
+              variant="contained"
+            >
+              {register.loading ? <>Please Wait...</> : <>Register</>}
             </Button>
           </Grid>
         </DialogActions>

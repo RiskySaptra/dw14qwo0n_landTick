@@ -10,6 +10,8 @@ import { userCheck } from "../_actions/auth";
 
 import { Grid, AppBar, makeStyles } from "@material-ui/core";
 
+import { NavLink } from "react-router-dom";
+
 const useStyles = makeStyles(theme => ({
   padding: {
     padding: "20px 5%"
@@ -46,9 +48,12 @@ const Header = ({ userCheck, auth }) => {
         alignItems="center"
         className={classes.paddingAppBar}
       >
-        <h1 className={classes.AppBar}>
-          <span style={{ color: "orange" }}>Land</span>Tick
-        </h1>
+        <NavLink to="/" style={{ color: "inherit", textDecoration: "inherit" }}>
+          <h1 className={classes.AppBar}>
+            <span style={{ color: "orange" }}>Land</span>Tick
+          </h1>
+        </NavLink>
+
         {auth.authenticated && !auth.loading ? (
           <Grid
             style={{

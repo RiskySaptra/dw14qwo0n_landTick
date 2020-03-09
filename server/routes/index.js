@@ -3,16 +3,18 @@ const router = express.Router();
 
 const { auth } = require("../middleware/auth");
 
-const { login } = require("../controllers/user");
-const { register } = require("../controllers/user");
-const { userCheck } = require("../controllers/user");
-const { userIndex } = require("../controllers/user");
+const UserController = require("../controllers/user");
+const TicketController = require("../controllers/ticket");
 
 // Auth Login
-router.post("/login", login);
-router.post("/register", register);
-router.get("/userCheck", auth, userCheck);
+router.post("/login", UserController.login);
+router.post("/register", UserController.register);
+router.get("/userCheck", auth, UserController.userCheck);
 
-// router.get("/users", userIndex);
+// Tiket
+router.post("/addTicket", auth, TicketController.addTicket);
+router.get("/indexTicket", TicketController.indexTicket);
+
+// Payment
 
 module.exports = router;

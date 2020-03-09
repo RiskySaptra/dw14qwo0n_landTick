@@ -1,4 +1,6 @@
 import { AUTO_AUTH, LOGIN, LOGOUT, REGISTER } from "../config/contants";
+
+// State
 const initState = {
   authenticated: false,
   user: null,
@@ -19,7 +21,6 @@ const auth = (state = initState, action) => {
     case `${LOGIN}_FULFILLED`:
     case `${REGISTER}_FULFILLED`:
       // console.log(action.payload);
-
       return {
         ...state,
         authenticated: true,
@@ -31,7 +32,6 @@ const auth = (state = initState, action) => {
     case `${LOGIN}_REJECTED`:
     case `${REGISTER}_REJECTED`:
       // console.log("rejected", action.payload.response.message);
-
       return {
         ...state,
         loading: false,

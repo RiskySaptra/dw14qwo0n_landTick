@@ -7,8 +7,10 @@ import { userCheck } from "../_actions/auth";
 import TabPanel from "../components/TabPanel";
 import PanelTrain from "../components/PanelTrain";
 import Header from "../components/Header";
+import LandingTicket from "../components/LandingTicket";
 
 import { Grid, makeStyles, Paper, Tabs, Tab } from "@material-ui/core";
+import TrainIcon from "@material-ui/icons/Train";
 
 import Carousel from "nuka-carousel";
 
@@ -70,35 +72,37 @@ const Home = ({ userCheck }) => {
               container
               direction="row"
               justify="space-between"
-              style={{ marginTop: "120px" }}
+              style={{ marginTop: "100px" }}
               className={classes.padding}
             >
               <Grid item xs={6}>
-                <h2
-                  style={{
-                    color: "white",
-                    textShadow: "2px 2px 5px black"
-                  }}
-                >
-                  <span style={{ color: "orange" }}>Good Morning</span> Ticket
-                  Seeker !
-                </h2>
-                <p
-                  style={{
-                    color: "white",
-                    textShadow: "2px 2px 5px black"
-                  }}
-                >
-                  Ingin Pulkam dengan Good Deal?
-                </p>
-                <p
-                  style={{
-                    color: "white",
-                    textShadow: "2px 2px 5px black"
-                  }}
-                >
-                  Masuk atau Daftar Sekarang ! !
-                </p>
+                <Grid>
+                  <h2
+                    style={{
+                      color: "white",
+                      textShadow: "2px 2px 5px black"
+                    }}
+                  >
+                    <span style={{ color: "orange" }}>Good Morning</span> Ticket
+                    Seeker !
+                  </h2>
+                  <p
+                    style={{
+                      color: "white",
+                      textShadow: "2px 2px 5px black"
+                    }}
+                  >
+                    Ingin Pulkam dengan Good Deal?
+                  </p>
+                  <p
+                    style={{
+                      color: "white",
+                      textShadow: "2px 2px 5px black"
+                    }}
+                  >
+                    Masuk atau Daftar Sekarang ! !
+                  </p>
+                </Grid>
               </Grid>
               <Grid item xs={6}>
                 <Carousel transitionMode="scroll3d">
@@ -109,7 +113,7 @@ const Home = ({ userCheck }) => {
                       backgroundPosition: "center",
                       backgroundSize: "cover"
                     }}
-                    elevation={3}
+                    elevation={5}
                   />
                   <Paper
                     style={{
@@ -118,7 +122,7 @@ const Home = ({ userCheck }) => {
                       backgroundPosition: "center",
                       backgroundSize: "cover"
                     }}
-                    elevation={3}
+                    elevation={5}
                   />
                   <Paper
                     style={{
@@ -127,14 +131,14 @@ const Home = ({ userCheck }) => {
                       backgroundPosition: "center",
                       backgroundSize: "cover"
                     }}
-                    elevation={3}
+                    elevation={5}
                   />
                 </Carousel>
               </Grid>
             </Grid>
           </Grid>
           <Grid className={classes.padding}>
-            <Paper elevation={3}>
+            <Paper elevation={8}>
               <Grid container direction="row" alignItems="stretch">
                 <Grid item xs={2}>
                   <Tabs
@@ -143,8 +147,11 @@ const Home = ({ userCheck }) => {
                     onChange={handleChange}
                     indicatorColor="primary"
                   >
-                    <Tab label="Train" {...a11yProps(0)} />
-                    <Tab label="Airplane" {...a11yProps(1)} />
+                    <Tab
+                      icon={<TrainIcon style={{ color: "gray" }} />}
+                      label="Train"
+                      {...a11yProps(0)}
+                    />
                   </Tabs>
                 </Grid>
                 <Grid item xs={10}>
@@ -163,6 +170,71 @@ const Home = ({ userCheck }) => {
                 </Grid>
               </Grid>
             </Paper>
+          </Grid>
+          <Grid className={classes.padding}>
+            <Grid
+              container
+              direction="row"
+              justify="space-around"
+              alignItems="flex-start"
+              wrap="nowrap"
+            >
+              <Grid item xs={2}>
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <p>Train Name</p>
+                </Grid>
+              </Grid>
+              <Grid item xs={2}>
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <p>Departure</p>
+                </Grid>
+              </Grid>
+              <Grid item xs={2}>
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <p>Arrival</p>
+                </Grid>
+              </Grid>
+              <Grid item xs={2}>
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <p>Duration</p>
+                </Grid>
+              </Grid>
+              <Grid item xs={2}>
+                <Grid
+                  container
+                  direction="row"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <p>Price</p>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid className={classes.padding}>
+            <Grid container direction="column">
+              <LandingTicket />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
