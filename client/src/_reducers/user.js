@@ -1,31 +1,33 @@
-import { TICKET } from "../config/contants";
+import { LOGIN, LOGOUT, REGISTER } from "../config/contants";
 
 // State
 const initState = {
   authenticated: false,
   user: null,
-  loading: true
+  loading: false
 };
 
-const ticket = (state = initState, action) => {
+const user = (state = initState, action) => {
   switch (action.type) {
-    case `${TICKET}_PENDING`:
-      // console.log(action.payload);
+    case `${LOGIN}_PENDING`:
+    case `${REGISTER}_PENDING`:
       return {
         ...state,
         loading: true,
         error: false
       };
-    case `${TICKET}_FULFILLED`:
+    case `${LOGIN}_FULFILLED`:
+    case `${REGISTER}_FULFILLED`:
       // console.log(action.payload);
       return {
         ...state,
         authenticated: true,
-        data: action.payload,
+        user: action.payload,
         loading: false,
         error: false
       };
-    case `${TICKET}_REJECTED`:
+    case `${LOGIN}_REJECTED`:
+    case `${REGISTER}_REJECTED`:
       // console.log("rejected", action.payload.response.message);
       return {
         ...state,
@@ -33,8 +35,17 @@ const ticket = (state = initState, action) => {
         message: action.payload.response.data.message,
         error: true
       };
+    case `${LOGOUT}`:
+      return {
+        ...state,
+        authenticated: false,
+        user: null,
+        loading: false,
+        error: null
+      };
+
     default:
       return state;
   }
 };
-export default ticket;
+export default user;

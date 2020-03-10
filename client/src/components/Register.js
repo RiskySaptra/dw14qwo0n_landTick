@@ -9,12 +9,13 @@ import {
   TextField,
   DialogActions,
   Divider,
-  Grid
+  Grid,
+  MenuItem
 } from "@material-ui/core";
 
 // redux
 import { connect } from "react-redux";
-import { register } from "../_actions/auth";
+import { register } from "../_actions/user";
 
 const useStyles = makeStyles(theme => ({
   AppBarBtn: {
@@ -26,6 +27,10 @@ const useStyles = makeStyles(theme => ({
 const Register = ({ register }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const genders = [
+    { value: "male", label: "Male" },
+    { value: "female", label: "Female" }
+  ];
   const [data, setData] = useState({
     role: "user",
     full_name: "",
@@ -37,12 +42,12 @@ const Register = ({ register }) => {
     address: ""
   });
   const handleChange = e => {
-    setData({ ...data, [e.target.id]: e.target.value });
+    setData({ ...data, [e.target.name]: e.target.value });
   };
   const handleSubmit = () => {
     register(data);
   };
-  // console.log(data);
+  console.log(data);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -51,6 +56,7 @@ const Register = ({ register }) => {
   const handleClose = () => {
     setOpen(false);
   };
+
   return (
     <>
       <Button
@@ -67,7 +73,7 @@ const Register = ({ register }) => {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Register</DialogTitle>
+        <DialogTitle>Register</DialogTitle>
         <Divider />
         <DialogContent>
           <Grid
@@ -77,9 +83,10 @@ const Register = ({ register }) => {
             alignItems="stretch"
           >
             <TextField
+              required
               variant="outlined"
               margin="dense"
-              id="full_name"
+              name="full_name"
               label="Full Name"
               type="text"
               value={data.full_name}
@@ -87,45 +94,56 @@ const Register = ({ register }) => {
               style={{ minWidth: "300px" }}
             />
             <TextField
+              required
               variant="outlined"
               margin="dense"
-              id="user_name"
+              name="user_name"
               label="User Name"
               type="text"
               value={data.user_name}
               onChange={handleChange}
             />
             <TextField
+              required
               variant="outlined"
               margin="dense"
-              id="email"
+              name="email"
               label="Email"
               type="text"
               value={data.email}
               onChange={handleChange}
             />
             <TextField
+              required
               variant="outlined"
               margin="dense"
-              id="password"
+              name="password"
               label="Password"
               type="password"
               value={data.password}
               onChange={handleChange}
             />
             <TextField
-              variant="outlined"
+              required
               margin="dense"
-              id="gender"
+              name="gender"
+              select
               label="Gender"
-              type="text"
               value={data.gender}
               onChange={handleChange}
-            />
+              variant="outlined"
+            >
+              {genders.map((option, index) => (
+                <MenuItem key={index} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
             <TextField
+              required
               variant="outlined"
               margin="dense"
-              id="address"
+              name="address"
               label="Address"
               type="text"
               value={data.address}
@@ -152,8 +170,7 @@ const Register = ({ register }) => {
 };
 const mapStateToProps = state => {
   return {
-    register: state.register,
-    auth: state.auth
+    register: state.register
   };
 };
 

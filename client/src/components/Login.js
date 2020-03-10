@@ -15,7 +15,7 @@ import Alert from "@material-ui/lab/Alert";
 
 // redux
 import { connect } from "react-redux";
-import { login } from "../_actions/auth";
+import { login } from "../_actions/user";
 
 const useStyles = makeStyles(theme => ({
   AppBarBtn: {
@@ -24,21 +24,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Login = ({ login, auth }) => {
+const Login = ({ login, user }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [data, setData] = useState({
     user_name: "",
     password: ""
   });
-  // console.log("login", auth.loading);
+
+  console.log(user.authenticated);
 
   const handleChange = e => {
     setData({ ...data, [e.target.id]: e.target.value });
   };
 
-  const handleLogin = () => {
-    login(data);
+  const handleLogin = async () => {
+    await login(data);
+    window.location.reload();
   };
 
   const handleClickOpen = () => {
@@ -84,11 +86,10 @@ const Login = ({ login, auth }) => {
               onChange={handleChange}
             />
           </Grid>
-
-          {auth.error ? (
+          {user.error === true ? (
             <Box style={{ paddingTop: "5%" }}>
               <Alert severity="error" action={false}>
-                {auth.error}
+                {user.message}
               </Alert>
             </Box>
           ) : (
@@ -119,7 +120,7 @@ const Login = ({ login, auth }) => {
 };
 const mapStateToProps = state => {
   return {
-    auth: state.auth
+    user: state.user
   };
 };
 
