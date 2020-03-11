@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 //redux
 import { connect } from "react-redux";
 import { listTicket } from "../_actions/ticket";
 
-import { Grid, makeStyles, Button } from "@material-ui/core";
+import {
+  Grid,
+  makeStyles,
+  Button,
+  Dialog,
+  DialogContent
+} from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -19,11 +25,19 @@ const useStyles = makeStyles({
 });
 
 const LandingTicket = ({ listTicket, ticket }) => {
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
+
+  const handleOpenss = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   useEffect(() => {
     listTicket();
   }, [listTicket]);
-  // console.log("darimana", ticket.data);
+  // console.log("darimana boss", ticket.data);
   // console.log("status", props.ticket.loading);
   if (ticket.loading) {
     return <>loading</>;
@@ -35,6 +49,7 @@ const LandingTicket = ({ listTicket, ticket }) => {
             <Button
               fullWidth
               variant="outlined"
+              onClick={handleOpenss}
               classes={{
                 label: classes.label,
                 root: classes.root
@@ -96,7 +111,7 @@ const LandingTicket = ({ listTicket, ticket }) => {
                     alignItems="center"
                   >
                     <p>
-                      2 <b>Jam</b> 12 <b>Menit</b>
+                      2 <b>Hours</b> 12 <b>Minutes</b>
                     </p>
                   </Grid>
                 </Grid>
@@ -117,6 +132,11 @@ const LandingTicket = ({ listTicket, ticket }) => {
               </Grid>
             </Button>
           ))}
+          <Dialog open={open} onClose={handleClose} maxWidth="xl">
+            <DialogContent>
+              <p>Login Dulu..</p>
+            </DialogContent>
+          </Dialog>
         </Grid>
       </>
     );

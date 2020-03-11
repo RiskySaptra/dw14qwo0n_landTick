@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { DatePicker } from "@material-ui/pickers";
 
 const DateReturn = data => {
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const [selectedDate, handleDateChange] = useState(new Date()); // tanggal hari ini
   return (
     <>
       <DatePicker

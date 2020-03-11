@@ -26,7 +26,6 @@ const PanelTrain = () => {
     setChecked(event.target.checked);
     setShow(!event.target.checked);
   };
-
   const handleAdult = event => {
     setAdult(event.target.value);
   };

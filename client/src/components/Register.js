@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Register = ({ register }) => {
+const Register = ({ register, user }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const genders = [
@@ -44,8 +44,9 @@ const Register = ({ register }) => {
   const handleChange = e => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-  const handleSubmit = () => {
-    register(data);
+  const handleSubmit = async () => {
+    await register(data);
+    window.location.reload();
   };
   console.log(data);
 
@@ -139,6 +140,16 @@ const Register = ({ register }) => {
                 </MenuItem>
               ))}
             </TextField>
+            <TextField
+              required
+              variant="outlined"
+              margin="dense"
+              name="phone"
+              label="Phone"
+              type="text"
+              value={data.phone}
+              onChange={handleChange}
+            />
             <TextField
               required
               variant="outlined"
