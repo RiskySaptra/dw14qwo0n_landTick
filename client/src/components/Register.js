@@ -17,6 +17,8 @@ import {
 import { connect } from "react-redux";
 import { register } from "../_actions/user";
 
+import { genders } from "../select_data/genders";
+
 const useStyles = makeStyles(theme => ({
   AppBarBtn: {
     margin: "0px 10px",
@@ -27,10 +29,6 @@ const useStyles = makeStyles(theme => ({
 const Register = ({ register, user }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const genders = [
-    { value: "male", label: "Male" },
-    { value: "female", label: "Female" }
-  ];
   const [data, setData] = useState({
     role: "user",
     full_name: "",
@@ -48,7 +46,6 @@ const Register = ({ register, user }) => {
     await register(data);
     window.location.reload();
   };
-  console.log(data);
 
   const handleClickOpen = () => {
     setOpen(true);

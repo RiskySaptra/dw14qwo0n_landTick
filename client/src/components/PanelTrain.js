@@ -3,29 +3,38 @@ import {
   Grid,
   TextField,
   IconButton,
-  Checkbox,
-  FormControlLabel,
   FormControl,
   MenuItem,
   Select,
-  Button
+  Button,
+  FormControlLabel,
+  Checkbox
 } from "@material-ui/core";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+
+import { stations } from "../select_data/stasiun";
 import SwapHorizIcon from "@material-ui/icons/SwapHoriz";
-import DateFnsUtils from "@date-io/date-fns";
-import DateReturn from "./DateReturn";
-import DateDeparture from "./DateDeparture";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 const PanelTrain = () => {
+  const [check, setCheck] = useState(false);
   const [adult, setAdult] = useState("");
   const [baby, setBaby] = useState("");
-  const [checked, setChecked] = useState(false);
-  const [show, setShow] = useState(true);
+  const [from, setFrom] = useState("");
+  const [destination, setDestination] = useState("");
 
-  const handleChange = event => {
-    setChecked(event.target.checked);
-    setShow(!event.target.checked);
+  const handleSwap = e => {
+    setFrom(destination);
+    setDestination(from);
   };
+
+  const handleSelectDeparture = (e, value) => {
+    setFrom(value);
+  };
+
+  const handleSelectDestination = (e, value) => {
+    setDestination(value);
+  };
+
   const handleAdult = event => {
     setAdult(event.target.value);
   };
@@ -44,22 +53,43 @@ const PanelTrain = () => {
       >
         <Grid item xs={5}>
           <Grid>
-            <TextField label="From" variant="outlined" size="small" fullWidth />
+            <Autocomplete
+              options={stations}
+              inputValue={from}
+              getOptionLabel={option => option.location}
+              onInputChange={handleSelectDeparture}
+              renderInput={params => (
+                <TextField
+                  {...params}
+                  label="From"
+                  margin="dense"
+                  variant="outlined"
+                />
+              )}
+            />
           </Grid>
         </Grid>
         <Grid item xs={2}>
           <Grid container direction="row" justify="center" alignItems="center">
-            <IconButton>
+            <IconButton onClick={handleSwap}>
               <SwapHorizIcon />
             </IconButton>
           </Grid>
         </Grid>
         <Grid item xs={5}>
-          <TextField
-            label="Destination"
-            variant="outlined"
-            size="small"
-            fullWidth
+          <Autocomplete
+            options={stations}
+            inputValue={destination}
+            getOptionLabel={option => option.location}
+            onInputChange={handleSelectDestination}
+            renderInput={params => (
+              <TextField
+                {...params}
+                label="Destination"
+                margin="dense"
+                variant="outlined"
+              />
+            )}
           />
         </Grid>
       </Grid>
@@ -76,11 +106,7 @@ const PanelTrain = () => {
             <Grid item xs={6}>
               <FormControlLabel
                 control={
-                  <Checkbox
-                    checked={checked}
-                    onChange={handleChange}
-                    color="primary"
-                  />
+                  <Checkbox onChange={e => setCheck(!check)} color="primary" />
                 }
                 label="Round-trip ticket"
               />
@@ -110,14 +136,28 @@ const PanelTrain = () => {
         <Grid item xs={5}>
           <Grid container direction="row" justify="center" spacing={1}>
             <Grid item xs={6}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DateDeparture />
-              </MuiPickersUtilsProvider>
+              <TextField
+                fullWidth
+                name="departure_date"
+                variant="outlined"
+                margin="dense"
+                format="dd/mm/yyyy"
+                defaultValue="2020-02-20"
+                label="Departure Date"
+                type="date"
+              />
             </Grid>
             <Grid item xs={6}>
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DateReturn data={show} />
-              </MuiPickersUtilsProvider>
+              <TextField
+                fullWidth
+                name="departure_date"
+                variant="outlined"
+                margin="dense"
+                format="dd/mm/yyyy"
+                defaultValue="2020-02-20"
+                label="Return Date"
+                type="date"
+              />
             </Grid>
           </Grid>
         </Grid>

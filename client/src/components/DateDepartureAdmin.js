@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { DatePicker } from "@material-ui/pickers";
-const DateDeparture = () => {
+
+const DateDepartureAdmin = () => {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
@@ -8,7 +9,7 @@ const DateDeparture = () => {
       <DatePicker
         autoOk
         inputVariant="outlined"
-        label="Departure"
+        label="Arrival Date"
         margin="dense"
         format="MM/dd/yyyy"
         variant="inline"
@@ -20,4 +21,4 @@ const DateDeparture = () => {
   );
 };
 
-export default DateDeparture;
+export default DateDepartureAdmin;

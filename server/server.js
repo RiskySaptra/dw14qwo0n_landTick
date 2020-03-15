@@ -15,5 +15,5 @@ app.use(cors());
 app.use("/api/v1", routes);
 
 app.listen(port, () => {
-  console.log("Server ON");
+  console.log("Server ON", port);
 });

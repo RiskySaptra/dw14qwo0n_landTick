@@ -4,13 +4,8 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { listTicket } from "../_actions/ticket";
 
-import {
-  Grid,
-  makeStyles,
-  Button,
-  Dialog,
-  DialogContent
-} from "@material-ui/core";
+import { NavLink } from "react-router-dom";
+import { Grid, makeStyles, Button, Dialog, Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -37,8 +32,7 @@ const LandingTicket = ({ listTicket, ticket }) => {
   useEffect(() => {
     listTicket();
   }, [listTicket]);
-  // console.log("darimana boss", ticket.data);
-  // console.log("status", props.ticket.loading);
+
   if (ticket.loading) {
     return <>loading</>;
   } else {
@@ -133,9 +127,15 @@ const LandingTicket = ({ listTicket, ticket }) => {
             </Button>
           ))}
           <Dialog open={open} onClose={handleClose} maxWidth="xl">
-            <DialogContent>
-              <p>Login Dulu..</p>
-            </DialogContent>
+            <Grid container>
+              <Box style={{ margin: "15px" }}>
+                <p>
+                  Your ticket has been added successfully, please immediately
+                  make a payment,
+                  <NavLink to="/MyTicket">Click Here</NavLink>
+                </p>
+              </Box>
+            </Grid>
           </Dialog>
         </Grid>
       </>

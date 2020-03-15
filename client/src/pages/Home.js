@@ -9,7 +9,7 @@ import PanelTrain from "../components/PanelTrain";
 import Header from "../components/Header";
 import LandingTicket from "../components/LandingTicket";
 
-import { Grid, makeStyles, Paper, Tabs, Tab } from "@material-ui/core";
+import { Grid, makeStyles, Paper, Tabs, Tab, Divider } from "@material-ui/core";
 import TrainIcon from "@material-ui/icons/Train";
 
 import Carousel from "nuka-carousel";
@@ -39,18 +39,19 @@ function a11yProps(index) {
   };
 }
 
-const Home = ({ userCheck }) => {
+const Home = ({ userCheck, ticket }) => {
   const [value, setValue] = React.useState(0);
   const classes = useStyles();
   useEffect(() => {
     userCheck();
   }, [userCheck]);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  // console.log("unch", auth.loading);
-
+  console.log("status loading", ticket);
+  // if (!ticket.loading) {
+  //   return <h1>Loading...</h1>;
+  // } else {
   return (
     <>
       <Grid
@@ -161,7 +162,7 @@ const Home = ({ userCheck }) => {
                     style={{ padding: "2% 3%" }}
                   >
                     <Grid>
-                      <h3 className={classes.noPadding}>Train</h3>
+                      <h2 className={classes.noPadding}>Train</h2>
                     </Grid>
                     <TabPanel value={value} index={0}>
                       <PanelTrain />
@@ -230,6 +231,8 @@ const Home = ({ userCheck }) => {
                 </Grid>
               </Grid>
             </Grid>
+
+            <Divider />
           </Grid>
           <Grid className={classes.padding}>
             <Grid container direction="column">
@@ -241,9 +244,11 @@ const Home = ({ userCheck }) => {
     </>
   );
 };
+// };
 const mapStateToProps = state => {
   return {
-    auth: state.auth
+    auth: state.auth,
+    ticket: state.ticket
   };
 };
 

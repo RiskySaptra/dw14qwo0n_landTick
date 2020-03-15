@@ -1,6 +1,6 @@
 import React from "react";
 import MenuItem from "@material-ui/core/MenuItem";
-import { Avatar, IconButton, Menu, Grid } from "@material-ui/core";
+import { Avatar, IconButton, Menu, Grid, Divider } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 
 const Menus = unch => {
@@ -36,28 +36,56 @@ const Menus = unch => {
           onClose={handleClosed}
         >
           <Grid>
-            <MenuItem dense onClick={handleClosed}>
-              Profile
-            </MenuItem>
-            <MenuItem dense onClick={handleClosed}>
-              My account
-            </MenuItem>
-            {unch.unch.user.user.role === "admin" ? (
-              <NavLink
-                to="/admin"
-                style={{ color: "inherit", textDecoration: "inherit" }}
-              >
-                <MenuItem dense onClick={handleClosed}>
-                  Admin Page
-                </MenuItem>
-              </NavLink>
+            {unch.unch.user.user.role === "user" ? (
+              <>
+                <NavLink
+                  to="/MyTicket"
+                  style={{ color: "inherit", textDecoration: "inherit" }}
+                >
+                  <MenuItem dense onClick={handleClosed}>
+                    MyTicket
+                  </MenuItem>
+                </NavLink>
+                <NavLink
+                  to="/Payment"
+                  style={{ color: "inherit", textDecoration: "inherit" }}
+                >
+                  <MenuItem dense onClick={handleClosed}>
+                    Payment
+                  </MenuItem>
+                </NavLink>
+              </>
             ) : (
               <></>
+            )}
+
+            {unch.unch.user.user.role === "admin" ? (
+              <>
+                <NavLink
+                  to="/admin"
+                  style={{ color: "inherit", textDecoration: "inherit" }}
+                >
+                  <MenuItem dense onClick={handleClosed}>
+                    Admin Page
+                  </MenuItem>
+                </NavLink>
+                <NavLink
+                  to="/addTicket"
+                  style={{ color: "inherit", textDecoration: "inherit" }}
+                >
+                  <MenuItem dense onClick={handleClosed}>
+                    Add Ticket
+                  </MenuItem>
+                </NavLink>
+              </>
+            ) : (
+              <> </>
             )}
             <NavLink
               to="/"
               style={{ color: "inherit", textDecoration: "inherit" }}
             >
+              <Divider />
               <MenuItem dense onClick={handleLogout}>
                 Logout
               </MenuItem>

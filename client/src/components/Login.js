@@ -32,7 +32,7 @@ const Login = ({ login, user }) => {
     password: ""
   });
 
-  console.log(user.authenticated);
+  // console.log(user.authenticated);
 
   const handleChange = e => {
     setData({ ...data, [e.target.id]: e.target.value });

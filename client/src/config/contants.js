@@ -9,3 +9,4 @@ export const REGISTER = "REGISTER";
 
 // Ticket
 export const TICKET = "TICKET";
+export const ADD_TICKET = "ADD_TICKET";
