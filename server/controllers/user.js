@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const models = require("../models");
 const User = models.user;
+const Transaction = models.transaction;
+const Ticket = models.ticket;
 
 exports.login = async (req, res) => {
   try {
@@ -31,7 +33,11 @@ exports.login = async (req, res) => {
       });
     }
   } catch (err) {
-    console.log(err);
+    res.status(404).json({
+      success: false,
+      message: "Something Wrong",
+      data: {}
+    });
   }
 };
 exports.register = async (req, res) => {
@@ -45,9 +51,14 @@ exports.register = async (req, res) => {
       data: { user }
     });
   } catch (err) {
-    console.log(err);
+    res.status(404).json({
+      success: false,
+      message: "Something Wrong",
+      data: {}
+    });
   }
 };
+
 exports.userCheck = async (req, res) => {
   try {
     if (req.user != null) {
@@ -69,7 +80,7 @@ exports.userCheck = async (req, res) => {
   } catch (err) {
     res.status(404).json({
       success: false,
-      message: "Authorization Required",
+      message: "Something Wrong",
       data: {}
     });
   }

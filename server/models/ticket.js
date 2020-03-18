@@ -5,18 +5,26 @@ module.exports = (sequelize, DataTypes) => {
     {
       train: DataTypes.STRING,
       class: DataTypes.ENUM(["economy", "business", "executive"]),
-      departure_date: DataTypes.STRING,
-      departure_station: DataTypes.STRING,
-      departure_time: DataTypes.STRING,
-      destination_station: DataTypes.STRING,
-      arrival_time: DataTypes.STRING,
-      ticket_price: DataTypes.STRING,
+      departure_date: DataTypes.DATE,
+      departure_station: DataTypes.INTEGER,
+      departure_time: DataTypes.DATE,
+      destination_station: DataTypes.INTEGER,
+      arrival_time: DataTypes.DATE,
+      ticket_price: DataTypes.INTEGER,
       quantities: DataTypes.INTEGER
     },
     {}
   );
   ticket.associate = function(models) {
     // associations can be defined here
+    ticket.belongsTo(models.station, {
+      as: "departure",
+      foreignKey: "departure_station"
+    });
+    ticket.belongsTo(models.station, {
+      as: "destination",
+      foreignKey: "destination_station"
+    });
   };
   return ticket;
 };

@@ -15,11 +15,9 @@ exports.auth = async (req, res, next) => {
     }
     req.user = user.id;
     req.role = user.role;
-    // req.level = user.level;
     req.token = token;
     next();
   } catch (err) {
-    // console.log(err);
     res.status(401).json({
       success: false,
       message: "Authorization Required",

@@ -17,19 +17,19 @@ module.exports = {
         defaultValue: null
       },
       departure_date: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       departure_station: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       departure_time: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       destination_station: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       arrival_time: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       ticket_price: {
         type: Sequelize.STRING

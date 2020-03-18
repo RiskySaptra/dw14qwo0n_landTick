@@ -5,8 +5,10 @@ import { connect } from "react-redux";
 import { listTicket } from "../_actions/ticket";
 
 import { NavLink } from "react-router-dom";
-import { Grid, makeStyles, Button, Dialog, Box } from "@material-ui/core";
+import { Grid, makeStyles, Dialog, Box, Button } from "@material-ui/core";
 
+import moment from "moment";
+import { toRupiah } from "../helpers/helper";
 const useStyles = makeStyles({
   root: {
     background: "white",
@@ -21,14 +23,32 @@ const useStyles = makeStyles({
 
 const LandingTicket = ({ listTicket, ticket }) => {
   const [open, setOpen] = useState(false);
+  const [order, setOrder] = useState(null);
   const classes = useStyles();
 
-  const handleOpenss = () => {
-    setOpen(true);
+  const getDuration = (timeA, timeB) => {
+    var startTime = moment(timeA, "YYYY-MM-DD HH:mm:ss");
+    var endTime = moment(timeB, "YYYY-MM-DD HH:mm:ss");
+    var duration = moment.duration(endTime.diff(startTime));
+    var hours = parseInt(duration.asHours());
+    var minutes = parseInt(duration.asMinutes()) - hours * 60;
+    if (hours > 0) {
+      if (minutes === 0) {
+        return `${hours} Hour`;
+      } else {
+        return `${hours} Hour ${minutes} Minutes`;
+      }
+    } else {
+      return `${minutes} Minutes`;
+    }
   };
-  const handleClose = () => {
-    setOpen(false);
+
+  const handleData = async (e, value) => {
+    await setOrder(value.id);
+    setOpen(!open);
   };
+  console.log(order);
+
   useEffect(() => {
     listTicket();
   }, [listTicket]);
@@ -43,7 +63,9 @@ const LandingTicket = ({ listTicket, ticket }) => {
             <Button
               fullWidth
               variant="outlined"
-              onClick={handleOpenss}
+              onClick={e => {
+                handleData(e, item);
+              }}
               classes={{
                 label: classes.label,
                 root: classes.root
@@ -79,9 +101,12 @@ const LandingTicket = ({ listTicket, ticket }) => {
                     alignItems="center"
                   >
                     <p>
-                      {item.departure_time} <b> WIB</b>
+                      {moment(item.departure_time)
+                        .local()
+                        .format("HH:mm")}{" "}
+                      WIB
                     </p>
-                    <p>{item.departure_station}</p>
+                    <p>{item.departure.city}</p>
                   </Grid>
                 </Grid>
                 <Grid item xs={2}>
@@ -92,9 +117,12 @@ const LandingTicket = ({ listTicket, ticket }) => {
                     alignItems="center"
                   >
                     <p>
-                      {item.arrival_time} <b> WIB</b>
+                      {moment(item.arrival_time)
+                        .local()
+                        .format("HH:mm")}{" "}
+                      WIB
                     </p>
-                    <p>{item.destination_station}</p>
+                    <p>{item.destination.city}</p>
                   </Grid>
                 </Grid>
                 <Grid item xs={2}>
@@ -104,9 +132,7 @@ const LandingTicket = ({ listTicket, ticket }) => {
                     justify="center"
                     alignItems="center"
                   >
-                    <p>
-                      2 <b>Hours</b> 12 <b>Minutes</b>
-                    </p>
+                    <p>{getDuration(item.departure_time, item.arrival_time)}</p>
                   </Grid>
                 </Grid>
 
@@ -117,16 +143,19 @@ const LandingTicket = ({ listTicket, ticket }) => {
                     justify="center"
                     alignItems="center"
                   >
-                    <p>
-                      <b>Rp. </b>
-                      {item.ticket_price}
-                    </p>
+                    <p>{toRupiah(item.ticket_price)}</p>
                   </Grid>
                 </Grid>
               </Grid>
             </Button>
           ))}
-          <Dialog open={open} onClose={handleClose} maxWidth="xl">
+          <Dialog
+            open={open}
+            onClose={e => {
+              setOpen(false);
+            }}
+            maxWidth="xl"
+          >
             <Grid container>
               <Box style={{ margin: "15px" }}>
                 <p>

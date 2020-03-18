@@ -48,7 +48,7 @@ const Home = ({ userCheck, ticket }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log("status loading", ticket);
+  // console.log("status loading", ticket);
   // if (!ticket.loading) {
   //   return <h1>Loading...</h1>;
   // } else {

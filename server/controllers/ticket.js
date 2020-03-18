@@ -1,10 +1,10 @@
-const jwt = require("jsonwebtoken");
 const models = require("../models");
 const Ticket = models.ticket;
+const Station = models.station;
 
 exports.addTicket = async (req, res) => {
   try {
-    if (req.role == "admin") {
+    if (req.role === "admin") {
       ticket = await Ticket.create(req.body);
       res.json({
         success: true,
@@ -19,16 +19,42 @@ exports.addTicket = async (req, res) => {
       });
     }
   } catch (err) {
-    console.log(err);
+    res.status(404).json({
+      success: false,
+      message: "Something Wrong",
+      data: {}
+    });
   }
 };
 exports.indexTicket = async (req, res) => {
   try {
-    ticket = await Ticket.findAll({});
+    ticket = await Ticket.findAll({
+      include: [
+        {
+          model: Station,
+          as: "departure",
+          attributes: ["code", "name", "city"]
+        },
+        {
+          model: Station,
+          as: "destination",
+          attributes: ["code", "name", "city"]
+        }
+      ],
+      attributes: {
+        exclude: ["createdAt", "departure_station", "destination_station"]
+      }
+    });
     res.json({
       success: true,
       message: "Success",
       data: { ticket }
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(404).json({
+      success: false,
+      message: "Something Wrong",
+      data: {}
+    });
+  }
 };

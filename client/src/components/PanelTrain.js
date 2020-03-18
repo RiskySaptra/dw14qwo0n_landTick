@@ -56,7 +56,7 @@ const PanelTrain = () => {
             <Autocomplete
               options={stations}
               inputValue={from}
-              getOptionLabel={option => option.location}
+              getOptionLabel={option => option.name}
               onInputChange={handleSelectDeparture}
               renderInput={params => (
                 <TextField
@@ -80,7 +80,7 @@ const PanelTrain = () => {
           <Autocomplete
             options={stations}
             inputValue={destination}
-            getOptionLabel={option => option.location}
+            getOptionLabel={option => option.name}
             onInputChange={handleSelectDestination}
             renderInput={params => (
               <TextField
