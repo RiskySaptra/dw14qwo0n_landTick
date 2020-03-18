@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Home from "./pages/Home";
+import AdminPage from "./pages/AdminPage";
+import AdminAddTicket from "./pages/AdminAddTicket";
+import PrivateRoute from "./components/PrivateRoute";
 
-function App() {
+import MyTicket from "./pages/MyTicket";
+import Payment from "./pages/Payment";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <PrivateRoute path="/admin">
+            <AdminPage />
+          </PrivateRoute>
+          <PrivateRoute path="/addTicket">
+            <AdminAddTicket />
+          </PrivateRoute>
+          <Route path="/myTicket">
+            <MyTicket />
+          </Route>
+          <Route path="/Payment">
+            <Payment />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
-}
-
+};
 export default App;
