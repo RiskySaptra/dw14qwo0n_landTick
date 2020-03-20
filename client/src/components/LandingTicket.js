@@ -103,8 +103,7 @@ const LandingTicket = ({ listTicket, ticket }) => {
                     <p>
                       {moment(item.departure_time)
                         .local()
-                        .format("HH:mm")}{" "}
-                      WIB
+                        .format("LT")}
                     </p>
                     <p>{item.departure.city}</p>
                   </Grid>
@@ -117,10 +116,11 @@ const LandingTicket = ({ listTicket, ticket }) => {
                     alignItems="center"
                   >
                     <p>
-                      {moment(item.arrival_time)
+                      {/* {moment(item.arrival_time)
                         .local()
                         .format("HH:mm")}{" "}
-                      WIB
+                      WIB */}
+                      {item.arrival_time}
                     </p>
                     <p>{item.destination.city}</p>
                   </Grid>

@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 const Login = ({ login, user }) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     user_name: "",
     password: ""

@@ -18,7 +18,7 @@ const MyTicket = () => {
       >
         <h1>My Ticket</h1>
         <Grid>
-          <Paper>
+          <Paper elevation={5}>
             <Grid container style={{ padding: "2%" }}>
               <Grid item xs={9} style={{ paddingRight: "2%" }}>
                 <Grid container direction="column">
