@@ -85,7 +85,7 @@ npm start
   <img src="preview/page_2.png" />
 
 - **React Native**
-  <img src="preview/ReactNative_landing.png" />
+  <img src="preview/ReactNative_1.png" />
 
 ## Built With
 
