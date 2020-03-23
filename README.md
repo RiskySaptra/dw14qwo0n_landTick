@@ -1,4 +1,4 @@
-# LANDTICK React Native
+# LANDTICK
 
 LandTick is an application that provides train tickets booking services
 
@@ -8,6 +8,8 @@ LandTick is an application that provides train tickets booking services
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Setup](#Setup)
+  - [Run the React Native](#React_Native)
+  - [Run the ReactJs Client](#ReactJs_client)
 - [Screenshots](#screenshots)
 - [Built With](#built-with)
 - [Author](#author)
@@ -41,7 +43,7 @@ Then, install all the packages that described in `package.json` of both `LandTic
 npm install
 ```
 
-### Setup ReactJs Front-end
+### Setup
 
 For the server setup, first, make sure your MySQL services is running fine. In `server` directory, you'll find `config.json` inside `config` folder. Open and edit the `development` configuration to match your database setup.
 
@@ -56,10 +58,24 @@ For the server setup, first, make sure your MySQL services is running fine. In `
   },
 ```
 
-### Run the server
+### React_Native
+
+```
+npx react-native run-android
+```
+
+### ReactJs_client
 
 ```
 npm start
+```
+
+### Run the server
+
+```
+
+npm start
+
 ```
 
 ## Screenshots
@@ -75,3 +91,7 @@ npm start
 ## Author
 
 **Muhammad Rizky Saputra** - [RiskySaptra](https://github.com/RiskySaptra)
+
+```
+
+```
