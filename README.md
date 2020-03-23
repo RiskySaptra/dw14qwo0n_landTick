@@ -1,68 +1,77 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# LANDTICK React Native
 
-## Available Scripts
+LandTick is an application that provides train tickets booking services
 
-In the project directory, you can run:
+## Table of Contents
 
-### `yarn start`
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Setup](#Setup)
+- [Screenshots](#screenshots)
+- [Built With](#built-with)
+- [Author](#author)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Before starting to install the project, there're some things that need to be done first.
 
-### `yarn test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Make sure all of these are properly installed in your system.
 
-### `yarn build`
+| Application | Download                                                                             |
+| ----------- | ------------------------------------------------------------------------------------ |
+| Git         | [Windows](https://desktop.github.com/) / [Linux](https://git-scm.com/download/linux) |
+| Node.js     | [Link](https://nodejs.org/en/download/)                                              |
+| React.js    | [Link](https://reactjs.org)                                                          |
+| MySQL       | [Link](https://www.mysql.com/downloads/)                                             |
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+First, clone this repository into your system.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone https://github.com/RiskySaptra/dw14qwo0n_landTick
+```
 
-### `yarn eject`
+Then, install all the packages that described in `package.json` of both `LandTick` For React Native and `client` For ReactJs Front-end and `server` directories for the Back-end .
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Setup ReactJs Front-end
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For the server setup, first, make sure your MySQL services is running fine. In `server` directory, you'll find `config.json` inside `config` folder. Open and edit the `development` configuration to match your database setup.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "YOUR_DATABASE",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+```
 
-## Learn More
+### Run the server
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Screenshots
 
-### Code Splitting
+<img src="screenshots/screenshots.png" />
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Built With
 
-### Analyzing the Bundle Size
+- [React JS](https://reactjs.org/) - Front-end
+- [Express JS](https://expressjs.com) - Back-end
+- [MySQL](https://www.mysql.com) - Database
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Author
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**Muhammad Rizky Saputra** - [RiskySaptra](https://github.com/RiskySaptra)
