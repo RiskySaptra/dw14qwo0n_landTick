@@ -12,6 +12,7 @@ LandTick is an application that provides train tickets booking services
   - [Run the ReactJs Client](#ReactJs_client)
 - [Screenshots](#screenshots)
 - [Built With](#built-with)
+- [Features](#Features)
 - [Author](#author)
 
 ## Getting Started
@@ -101,6 +102,14 @@ npm start
   - [Express JS](https://expressjs.com)
   - [Sequelize](https://sequelize.org/)
   - [MySQL](https://www.mysql.com) - Database
+
+## Built With
+
+- LOGIN
+- REGISTER
+- ADMIN Control(Adding New Ticket)
+- Ordering
+- Payment
 
 ## Author
 
