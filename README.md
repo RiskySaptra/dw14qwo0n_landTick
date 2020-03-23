@@ -105,9 +105,9 @@ npm start
 
 ## Features
 
-- LOGIN
-- REGISTER
-- ADMIN Control(Adding New Ticket)
+- Login
+- Register
+- AdminControl (Adding New Ticket)
 - Ordering
 - Payment
 
