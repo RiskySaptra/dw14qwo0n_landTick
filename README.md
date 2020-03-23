@@ -81,10 +81,8 @@ npm start
 ## Screenshots
 
 - **ReactJs**
-  <img src="preview/Home_page.png" />
-  <img src="preview/MyTicket_page.png" />
-  <img src="preview/Invoice_page.png" />
-  <img src="preview/Invoice_page_2.png" />
+  <img src="preview/page_1.png" />
+  <img src="preview/page_2.png" />
 
 ## Built With
 
