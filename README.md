@@ -103,7 +103,7 @@ npm start
   - [Sequelize](https://sequelize.org/)
   - [MySQL](https://www.mysql.com) - Database
 
-## Built With
+## Features
 
 - LOGIN
 - REGISTER
