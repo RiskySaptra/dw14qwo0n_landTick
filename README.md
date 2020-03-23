@@ -91,11 +91,13 @@ npm start
 
 - **Front-end**
 
-  - [React JS](https://reactjs.org/)
-  - [React Native](https://reactnative.dev/)
-  - [Redux](https://redux.js.org/)
+  - [React JS](https://reactjs.org/) - Web Client
+    - [Material UI](https://material-ui.com/) - Styling Framework
+  - [React Native](https://reactnative.dev/) - Android Client
+    - [React Native Paper](https://callstack.github.io/react-native-paper/) - Styling Framework
+  - [Redux](https://redux.js.org/) - State Management
 
-- **Back-end**
+* **Back-end**
   - [Express JS](https://expressjs.com)
   - [Sequelize](https://sequelize.org/)
   - [MySQL](https://www.mysql.com) - Database
