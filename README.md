@@ -80,7 +80,7 @@ npm start
 
 ## Screenshots
 
-<img src="screenshots/screenshots.png" />
+<img src="preview/Home_page.png" />
 
 ## Built With
 
