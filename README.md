@@ -89,9 +89,15 @@ npm start
 
 ## Built With
 
-- [React JS](https://reactjs.org/) - Front-end
-- [Express JS](https://expressjs.com) - Back-end
-- [MySQL](https://www.mysql.com) - Database
+- **Front-end**
+  -- [React JS](https://reactjs.org/)
+  -- [React Native](https://reactnative.dev/)
+  -- [Redux](https://redux.js.org/)
+
+- **Back-end**
+  -- [Express JS](https://expressjs.com)
+  -- [Sequelize](https://sequelize.org/)
+  -- [MySQL](https://www.mysql.com) - Database
 
 ## Author
 
