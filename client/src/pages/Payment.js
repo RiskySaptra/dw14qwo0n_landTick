@@ -202,8 +202,8 @@ const Payment = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={4}>
-              <Grid container direction="column" style={{ marginLeft: "5%" }}>
+            <Grid item xs={4} style={{ paddingLeft: "2%" }}>
+              <Grid container direction="column">
                 <Box style={{ background: "lightGrey", padding: "20px" }}>
                   <h1
                     style={{
